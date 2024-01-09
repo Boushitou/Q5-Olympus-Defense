@@ -5,22 +5,28 @@ public class ConstructionManager : MonoBehaviour
 {
     private bool b_isBuilding;
 
-    private GameObject _currentlySelected;
+    private GameObject _currentlySelectedTower;
+    private GameObject _currentlySelectedGhost;
     private Vector3 _mousePos;
 
     private LayerMask _tileLayer;
     private LayerMask _ghostLayer;
     private Camera _cam;
 
+    private Color _canPlace;
+    private Color _cantPlace;
+
     private void Awake()
     {
         _tileLayer = LayerMask.GetMask("Ground");
         _cam = Camera.main;
+        _canPlace = new Color(0.08915094f, 0.9f, 0.0988174f, 0.5019608f); //green transparent
+        _cantPlace = new Color(0.9019608f, 0.1213415f, 0.09019604f, 0.5019608f); //red transparent
     }
 
     private void Update()
     {
-        if (_currentlySelected != null)
+        if (_currentlySelectedGhost != null)
         {
             _mousePos = Input.mousePosition;
 
@@ -45,7 +51,16 @@ public class ConstructionManager : MonoBehaviour
         {
             Vector3 tilePos = hitInfo.transform.position;
 
-            _currentlySelected.transform.position = tilePos;
+            _currentlySelectedGhost.transform.position = tilePos;
+
+            if (hitInfo.transform.gameObject.CompareTag("Constructible"))
+            {
+                _currentlySelectedGhost.GetComponent<MeshRenderer>().material.color = _canPlace;
+            }
+            else
+            {
+                _currentlySelectedGhost.GetComponent<MeshRenderer>().material.color = _cantPlace;
+            }
         }
     }
 
@@ -56,7 +71,7 @@ public class ConstructionManager : MonoBehaviour
             if (hitInfo.transform.gameObject.CompareTag("Constructible"))
             {
                 Vector3 tilePos = hitInfo.transform.position;
-                Instantiate(_currentlySelected, tilePos, Quaternion.identity);
+                Instantiate(_currentlySelectedTower, tilePos, Quaternion.identity);
 
                 hitInfo.transform.gameObject.tag = "Unconstructible";
             }
@@ -65,21 +80,27 @@ public class ConstructionManager : MonoBehaviour
 
     public void UnselectTower()
     {
-        Destroy(_currentlySelected);
-        _currentlySelected = null;
+        Destroy(_currentlySelectedGhost);
+        _currentlySelectedGhost = null;
+        _currentlySelectedTower = null;
 
         b_isBuilding = false;
     }
 
-    public void SetCurrentlySelectedTower(GameObject tower)
+    public void SetCurrentlySelectedGhost(GameObject towerGhost)
     {
-        if (b_isBuilding && _currentlySelected != tower)
+        if (b_isBuilding && _currentlySelectedGhost != towerGhost)
         {
             Debug.Log("destroy ghost");
-            Destroy(_currentlySelected);
+            Destroy(_currentlySelectedGhost);
         }
 
-        _currentlySelected = Instantiate(tower);
+        _currentlySelectedGhost = Instantiate(towerGhost);
         b_isBuilding = true;
+    }
+
+    public void SetCurrentlySelectedTower(GameObject tower)
+    {
+        _currentlySelectedTower = tower;
     }
 }
