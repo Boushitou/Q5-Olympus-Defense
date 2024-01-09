@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour
     protected bool b_IsAttacking = false;
     protected bool b_HasToAttack = false;
 
+    protected int _radiusCheckStructure = 10;
     protected LayerMask _structureToAttackLayer;
 
     private Transform _transform;
@@ -117,14 +118,14 @@ public abstract class Enemy : MonoBehaviour
 
         if (structuresCollider.Length > 0)
         {
-            float dot = Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position);
-            float abs = Mathf.Abs(dot);
-            b_HasToAttack = abs <= 0.05;
+            b_HasToAttack = Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05;
+            _transform.LookAt(structuresCollider[0].transform.position);
+            /*if (Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05)
+            {
+                b_HasToAttack = true;
+                return;
+            }*/
         }
-
-        _transform.position = Vector3.MoveTowards(_transform.position, _path[_pathIndex].transform.position, _speed * Time.deltaTime);
-        _transform.LookAt(_path[_pathIndex].transform.position);
-        //target.position
 
         if (Vector3.Distance(_transform.position, _path[_pathIndex].transform.position) < 0.01)
         {
@@ -140,7 +141,13 @@ public abstract class Enemy : MonoBehaviour
             else
             {
                 _pathIndex += 1;
+                _transform.LookAt(_path[_pathIndex].transform.position);
             }
+        }
+        else
+        {
+            _transform.position = Vector3.MoveTowards(_transform.position, _path[_pathIndex].transform.position, _speed * Time.deltaTime);
+            //target.position
         }
     }
 

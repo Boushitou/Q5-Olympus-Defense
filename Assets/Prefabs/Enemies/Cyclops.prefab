@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 393696413240865462}
   - component: {fileID: 5577049946827131150}
   - component: {fileID: 9222871742861517111}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7669483461435939852}
   - component: {fileID: 6050148912981074964}
   - component: {fileID: 998012284826416233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cyclops
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,9 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bd825d05a85874e96c8221e816ed39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deplacementOffset: {x: 0, y: 0, z: 0}
   _path: []
-  _radiusCheckTower: 10
 --- !u!136 &6050148912981074964
 CapsuleCollider:
   m_ObjectHideFlags: 0
