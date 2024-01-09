@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -11,10 +12,16 @@ public abstract class Enemy : MonoBehaviour
     protected bool b_IsMoving = false;
     protected bool b_IsAttacking = false;
 
+    protected LayerMask _structureToAttackLayer;
+
+    [SerializeField] private Vector3 _deplacementOffset = Vector2.zero;
+    [SerializeField] private List<Transform> _path;
+    private int _pathIndex = 0;
+    private Vector3 _target = Vector3.zero;
+
     private void Update()
     {
-        //Move();
-        Attack();
+        Move();
 
         /*if (!b_IsMoving)
         {
@@ -38,8 +45,11 @@ public abstract class Enemy : MonoBehaviour
     public int GetBelief()
     { return _belief; }
 
-    public void SetSpeed(float speed)
-    { _speed = speed; }
+    public void SetOffsetDeplacement(Vector2 offset)
+    { _deplacementOffset = offset; }
+
+    public void SetPath(List<Transform> path)
+    { _path = path; }
 
     public void TakeDamage(int damage)
     { 
@@ -52,10 +62,38 @@ public abstract class Enemy : MonoBehaviour
     private void Death()
     { Destroy(gameObject); }
 
-    public abstract void Attack();
+    protected abstract void Attack();
+
+    protected abstract Collider[] CheckStructureToAttack();
 
     private void Move()
     {
+        Collider[] structuresCollider = CheckStructureToAttack();
 
+        if (structuresCollider == null)
+        {
+            if (Mathf.Abs(Vector3.Dot(transform.forward, structuresCollider[0].transform.position)) <= 0.05)
+            {
+                b_IsMoving = false;
+                b_IsAttacking = true;
+            }
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex].transform.position, _speed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, _path[_pathIndex].transform.position) < 0.01)
+        {
+            _pathIndex += 1;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        /*if (collision.transform.TryGetComponent(out Gate gate))
+        {
+            gate.TakeDamage();
+            Death();
+        }
+         */
     }
 }
