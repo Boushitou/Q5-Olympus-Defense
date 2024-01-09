@@ -1,4 +1,3 @@
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class ConstructionManager : MonoBehaviour
@@ -49,7 +48,7 @@ public class ConstructionManager : MonoBehaviour
     {
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _tileLayer))
         {
-            Vector3 tilePos = hitInfo.transform.position;
+            Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
 
             _currentlySelectedGhost.transform.position = tilePos;
 
@@ -70,8 +69,10 @@ public class ConstructionManager : MonoBehaviour
         {
             if (hitInfo.transform.gameObject.CompareTag("Constructible"))
             {
-                Vector3 tilePos = hitInfo.transform.position;
+                Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
+
                 Instantiate(_currentlySelectedTower, tilePos, Quaternion.identity);
+                UnselectTower();
 
                 hitInfo.transform.gameObject.tag = "Unconstructible";
             }
