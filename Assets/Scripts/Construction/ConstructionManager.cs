@@ -54,12 +54,20 @@ public class ConstructionManager : MonoBehaviour
 
             if (hitInfo.transform.gameObject.CompareTag("Constructible"))
             {
-                _currentlySelectedGhost.GetComponentInChildren<MeshRenderer>().material.color = _canPlace;
+                ChangeColorInChildren(_canPlace);
             }
             else
             {
-                _currentlySelectedGhost.GetComponentInChildren<MeshRenderer>().material.color = _cantPlace;
+                ChangeColorInChildren(_cantPlace);
             }
+        }
+    }
+
+    private void ChangeColorInChildren(Color color)
+    {
+        foreach (var renderer in _currentlySelectedGhost.GetComponentsInChildren<MeshRenderer>())
+        {
+            renderer.material.color = color;
         }
     }
 
