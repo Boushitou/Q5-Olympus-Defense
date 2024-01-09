@@ -540,7 +540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6461211934300002725, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
       propertyPath: m_Name
-      value: Tower
+      value: ArtemisTower
       objectReference: {fileID: 0}
     - target: {fileID: 8544175537379896834, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
       propertyPath: Origin
@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 8544175537379896834, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
       propertyPath: Projectile
       value: 
-      objectReference: {fileID: 734788715582786678, guid: c31c1cb7a7cc7ac44b7611ea4b0ac189, type: 3}
+      objectReference: {fileID: 3177918655579650170, guid: 349cab79dc460f746be9da588bd3af3b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
