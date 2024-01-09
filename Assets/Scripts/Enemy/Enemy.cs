@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,7 +17,7 @@ public abstract class Enemy : MonoBehaviour
     protected LayerMask _structureToAttackLayer;
 
     private Transform _transform;
-    [SerializeField] private Vector3 _deplacementOffset = Vector2.zero;
+    private Vector3 _deplacementOffset = Vector2.zero;
     [SerializeField] private List<Transform> _path;
     private int _pathIndex = 0;
     private Vector3 _target = Vector3.zero;
@@ -122,18 +123,33 @@ public abstract class Enemy : MonoBehaviour
         }
 
         _transform.position = Vector3.MoveTowards(_transform.position, _path[_pathIndex].transform.position, _speed * Time.deltaTime);
+        _transform.LookAt(_path[_pathIndex].transform.position);
         //target.position
 
         if (Vector3.Distance(_transform.position, _path[_pathIndex].transform.position) < 0.01)
         {
             if (_pathIndex == _path.Count - 1)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                if (!b_IsAttacking)
+                {
+                    b_IsAttacking = true;
+                    StartCoroutine(AttackGate());
+                }
             }
             else
             {
                 _pathIndex += 1;
             }
+        }
+    }
+
+    private IEnumerator AttackGate()
+    {
+        while (_path[_pathIndex].gameObject.activeSelf /*Gate.Instance.GetLife() > 0*/)
+        {
+            Debug.Log("gate take damage");
+            yield return new WaitForSeconds(_timeWaitAttack);
         }
     }
 
