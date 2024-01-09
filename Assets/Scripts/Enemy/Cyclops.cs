@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Cyclops : Enemy
 {
-    [SerializeField] private float _radiusCheckTower = 20;
+    [SerializeField] private float _radiusCheckTower = 10;
 
     private void Awake()
     {
@@ -35,12 +35,15 @@ public class Cyclops : Enemy
 
     protected override void Attack()
     {
-        Collider[] towers = GetTowers();
-
-        if (towers.Length > 0 && !b_IsAttacking)
+        if (!b_IsAttacking)
         {
-            b_IsAttacking = true;
-            StartCoroutine(AttackTower(towers[0].gameObject));
+            Collider[] towers = GetTowers();
+
+            if (towers.Length > 0)
+            {
+                b_IsAttacking = true;
+                StartCoroutine(AttackTower(towers[0].gameObject));
+            }
         }
     }
 
@@ -50,10 +53,12 @@ public class Cyclops : Enemy
         {
             //tower.TakeDamage(_damage);
             Debug.Log("tower take damage");
+            Debug.Log(Vector3.Distance(tower.transform.position, transform.position));
             yield return new WaitForSeconds(_timeWaitAttack);
         }
 
         b_IsAttacking = false;
+        b_HasToAttack = false;
     }
 
     protected override Collider[] CheckStructureToAttack()
