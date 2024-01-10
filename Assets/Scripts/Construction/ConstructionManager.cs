@@ -1,7 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class ConstructionManager : MonoBehaviour
 {
+    public static ConstructionManager Instance;
+
     private bool b_isBuilding;
 
     private GameObject _currentlySelectedTower;
@@ -15,12 +18,33 @@ public class ConstructionManager : MonoBehaviour
     private Color _canPlace;
     private Color _cantPlace;
 
+    private int _faith = 200;
+    private int _maxFaith = 9999;
+
+    private TextMeshProUGUI _faithTxt;
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
         _tileLayer = LayerMask.GetMask("Ground");
         _cam = Camera.main;
         _canPlace = new Color(0.08915094f, 0.9f, 0.0988174f, 0.5019608f); //green transparent
         _cantPlace = new Color(0.9019608f, 0.1213415f, 0.09019604f, 0.5019608f); //red transparent
+
+        _faithTxt = GameObject.Find("FaithCount").GetComponent<TextMeshProUGUI>();
+    }
+
+    private void Start()
+    {
+        _faithTxt.text = "Faith : " + _faith;
     }
 
     private void Update()
@@ -48,7 +72,7 @@ public class ConstructionManager : MonoBehaviour
     {
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _tileLayer))
         {
-            Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
+            Vector3 tilePos = new Vector3(hitInfo.transform.position.x, _currentlySelectedGhost.transform.localScale.y / 2, hitInfo.transform.position.z);
 
             _currentlySelectedGhost.transform.position = tilePos;
 
@@ -77,9 +101,12 @@ public class ConstructionManager : MonoBehaviour
         {
             if (hitInfo.transform.gameObject.CompareTag("Constructible"))
             {
-                Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
+                Vector3 tilePos = new Vector3(hitInfo.transform.position.x, _currentlySelectedTower.transform.localScale.y / 2, hitInfo.transform.position.z);
 
                 Instantiate(_currentlySelectedTower, tilePos, Quaternion.identity);
+                _currentlySelectedTower.GetComponent<Tower>().InitializeValue();
+                RemoveFaith(_currentlySelectedTower.GetComponent<Tower>().GetCost());
+
                 UnselectTower();
 
                 hitInfo.transform.gameObject.tag = "Unconstructible";
@@ -106,10 +133,43 @@ public class ConstructionManager : MonoBehaviour
 
         _currentlySelectedGhost = Instantiate(towerGhost);
         b_isBuilding = true;
+
+        UIManager.Instance.CloseConstructionMenu();
     }
 
     public void SetCurrentlySelectedTower(GameObject tower)
     {
-        _currentlySelectedTower = tower;
+        if (CanBeSelected(tower.GetComponent<Tower>()))
+        {
+            _currentlySelectedTower = tower;
+        }
+        else
+        {
+            UnselectTower();
+        }
+    }
+
+    public void AddFaith(int value)
+    {
+        _faith = _faith >= _maxFaith ? _maxFaith : _faith + value;
+
+        _faithTxt.text = "Faith : " + _faith;
+    }
+
+    public void RemoveFaith(int value)
+    {
+        _faith = _faith <= 0 ? 0 : _faith - value;
+
+        _faithTxt.text = "Faith : " + _faith;
+    }
+
+    public bool CanBeSelected(Tower tower)
+    {
+        if (tower.GetCost() <= _faith)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
