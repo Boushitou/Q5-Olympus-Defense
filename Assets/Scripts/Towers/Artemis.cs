@@ -2,15 +2,6 @@ using UnityEngine;
 
 public class Artemis : Tower
 {
-    private void Start()
-    {
-        _health = 100;
-        _damage = 30;
-        _cost = 100;
-        _atkSpeed = 0.3f;
-        _range = 15f;
-    }
-
     public override void Attack(Transform enemy)
     {
         if (Projectile != null)
@@ -20,5 +11,14 @@ public class Artemis : Tower
 
             arrow.GetComponent<Projectile>().SetEnemy(enemy);
         }
+    }
+
+    public override void InitializeValue()
+    {
+        _health = 100;
+        _damage = 30;
+        _cost = 100;
+        _atkSpeed = 0.3f;
+        _range = 15f;
     }
 }

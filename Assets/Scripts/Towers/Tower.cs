@@ -61,5 +61,9 @@ public abstract class Tower : MonoBehaviour
         return closestEnemy;
     }
 
+    public abstract void InitializeValue();
+
     public abstract void Attack(Transform enemy);
+
+    public int GetCost() { return _cost; }
 }
