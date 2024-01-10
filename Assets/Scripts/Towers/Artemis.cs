@@ -19,6 +19,6 @@ public class Artemis : Tower
         _damage = 30;
         _cost = 100;
         _atkSpeed = 0.3f;
-        _range = 8f;
+        _range = 15f;
     }
 }
