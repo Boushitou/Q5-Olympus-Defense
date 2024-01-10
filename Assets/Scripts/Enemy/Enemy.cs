@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -13,10 +13,11 @@ public abstract class Enemy : MonoBehaviour
     protected bool b_IsAttacking = false;
     protected bool b_HasToAttack = false;
 
+    protected int _radiusCheckStructure = 10;
     protected LayerMask _structureToAttackLayer;
 
-    private Transform _transform;
-    [SerializeField] private Vector3 _deplacementOffset = Vector2.zero;
+    protected Transform _transform;
+    private Vector3 _deplacementOffset = Vector2.zero;
     [SerializeField] private List<Transform> _path;
     private int _pathIndex = 0;
     private Vector3 _target = Vector3.zero;
@@ -116,34 +117,47 @@ public abstract class Enemy : MonoBehaviour
 
         if (structuresCollider.Length > 0)
         {
-            float dot = Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position);
-            float abs = Mathf.Abs(dot);
-            b_HasToAttack = abs <= 0.05;
-        }
+            b_HasToAttack = Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05;
+            _transform.LookAt(structuresCollider[0].transform.position);
 
-        _transform.position = Vector3.MoveTowards(_transform.position, _path[_pathIndex].transform.position, _speed * Time.deltaTime);
-        //target.position
+            /*if (Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05)
+            {
+                b_HasToAttack = true;
+                return;
+            }*/
+        }
 
         if (Vector3.Distance(_transform.position, _path[_pathIndex].transform.position) < 0.01)
         {
             if (_pathIndex == _path.Count - 1)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                if (!b_IsAttacking)
+                {
+                    b_IsAttacking = true;
+                    StartCoroutine(AttackGate());
+                }
             }
             else
             {
                 _pathIndex += 1;
+                //_transform.LookAt(_path[_pathIndex].transform.position);
             }
+        }
+        else
+        {
+            _transform.position = Vector3.MoveTowards(_transform.position, _path[_pathIndex].transform.position, _speed * Time.deltaTime);
+            _transform.LookAt(_path[_pathIndex].transform.position);
+            //target.position
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private IEnumerator AttackGate()
     {
-        /*if (collision.transform.TryGetComponent(out Gate gate))
+        while (_path[_pathIndex].gameObject.activeSelf /*Gate.Instance.GetLife() > 0*/)
         {
-            gate.TakeDamage();
-            Death();
+            Debug.Log("gate take damage");
+            yield return new WaitForSeconds(_timeWaitAttack);
         }
-         */
     }
 }

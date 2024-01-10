@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830041756765832211}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ATGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3367298448305688890}
   - component: {fileID: 7319555067911933438}
   - component: {fileID: 5647519680359999501}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

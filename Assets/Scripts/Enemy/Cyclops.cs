@@ -1,10 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Cyclops : Enemy
 {
-    [SerializeField] private float _radiusCheckTower = 10;
-
     private void Awake()
     {
         _life = 200;
@@ -16,11 +15,11 @@ public class Cyclops : Enemy
         _structureToAttackLayer = LayerMask.GetMask("Tower");
     }
 
-    private Collider[] /*Tower[]*/ GetTowers()
+    private Collider[] /*Tower[]*/ GetTowersAround()
     {
-        Collider[] towersCollider = Physics.OverlapSphere(transform.position, _radiusCheckTower, _structureToAttackLayer);
+        /*Collider[] towersCollider = Physics.OverlapSphere(transform.position, _radiusCheckStructure, _structureToAttackLayer);
 
-        /*Tower[] towers = new Tower[towersCollider.Length];
+        Tower[] towers = new Tower[towersCollider.Length];
         
         for (int i = 0; i < towersCollider.Length; i++)
         {
@@ -30,17 +29,18 @@ public class Cyclops : Enemy
         return towers;
         */
 
-        return Physics.OverlapSphere(transform.position, _radiusCheckTower, _structureToAttackLayer);
+        return Physics.OverlapSphere(transform.position, _radiusCheckStructure, _structureToAttackLayer);
     }
 
     protected override void Attack()
     {
         if (!b_IsAttacking)
         {
-            Collider[] towers = GetTowers();
+            Collider[] towers = GetTowersAround();
 
             if (towers.Length > 0)
             {
+                _transform.LookAt(towers[0].transform.position);
                 b_IsAttacking = true;
                 StartCoroutine(AttackTower(towers[0].gameObject));
             }
@@ -62,7 +62,5 @@ public class Cyclops : Enemy
     }
 
     protected override Collider[] CheckStructureToAttack()
-    {
-        return Physics.OverlapSphere(transform.position, _radiusCheckTower, _structureToAttackLayer);
-    }
+    { return Physics.OverlapSphere(transform.position, _radiusCheckStructure, _structureToAttackLayer); }
 }
