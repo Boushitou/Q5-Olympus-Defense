@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2859840785386773800}
   - component: {fileID: 7332067414700449701}
   - component: {fileID: 6659014605371607672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8068098816701563409}
   - component: {fileID: 4415567687213289567}
   - component: {fileID: 7243755345542071312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2949225722711966607}
   - component: {fileID: 2903015763964870750}
   - component: {fileID: 1899998303168754652}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 5673217160576302946}
   - component: {fileID: 7330042334294045157}
   - component: {fileID: 2306708719234637782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Harpy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,5 +320,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc02865ba418d84db1dd7b2cf2fc673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deplacementOffset: {x: 0, y: 0, z: 0}
   _path: []
