@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
     [SerializeField] private GameObject _constructionMenu;
+    [SerializeField] private Image _gateLifeImageSlidder;
 
     private void Awake()
     {
@@ -18,6 +20,11 @@ public class UIManager : MonoBehaviour
         }
 
         _constructionMenu.SetActive(false);
+    }
+
+    public void UpdateGateLife(int maxLife, int life)
+    {
+        _gateLifeImageSlidder.fillAmount = (float)life / maxLife;
     }
 
     public void OpenConstructionMenu()
