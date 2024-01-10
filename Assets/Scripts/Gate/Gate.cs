@@ -27,9 +27,12 @@ public class Gate : MonoBehaviour
 
     private void Death()
     {
-        GameManager.Instance.GameOver();
+        GameManager.Instance.GameOver(false);
     }
 
     public int GetLife()
     { return _life; }
+
+    public int GetMaxLife()
+    { return _maxLife; }
 }
