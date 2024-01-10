@@ -119,12 +119,6 @@ public abstract class Enemy : MonoBehaviour
         {
             b_HasToAttack = Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05;
             _transform.LookAt(structuresCollider[0].transform.position);
-
-            /*if (Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05)
-            {
-                b_HasToAttack = true;
-                return;
-            }*/
         }
 
         if (Vector3.Distance(_transform.position, _path[_pathIndex].transform.position) < 0.01)
@@ -154,9 +148,9 @@ public abstract class Enemy : MonoBehaviour
 
     private IEnumerator AttackGate()
     {
-        while (_path[_pathIndex].gameObject.activeSelf /*Gate.Instance.GetLife() > 0*/)
+        while (Gate.Instance.GetLife() > 0)
         {
-            Debug.Log("gate take damage");
+            Gate.Instance.TakeDamage(_damage);
             yield return new WaitForSeconds(_timeWaitAttack);
         }
     }
