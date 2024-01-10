@@ -10,8 +10,17 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
-    public void GameOver()
+    public void PauseGame()
     {
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+    }
+
+    public void GameOver(bool win)
+    {
+        PauseGame();
+
+        UIManager.Instance.GameOver(win);
+        
         Debug.Log("game over");
     }
 }

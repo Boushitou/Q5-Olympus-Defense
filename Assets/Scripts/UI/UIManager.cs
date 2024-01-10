@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject _constructionMenu;
     [SerializeField] private Image _gateLifeImageSlidder;
+
+    [SerializeField] private GameObject _gameOverMenu;
+    [SerializeField] private TextMeshProUGUI _textGameOverMenu;
+    [SerializeField] private TextMeshProUGUI _textGateLife;
+    [SerializeField] private TextMeshProUGUI _textKills;
 
     private void Awake()
     {
@@ -35,5 +41,12 @@ public class UIManager : MonoBehaviour
     public void CloseConstructionMenu()
     {
         _constructionMenu.SetActive(false);
+    }
+
+    public void GameOver(bool win)
+    {
+        _gameOverMenu.SetActive(true);
+        _textGameOverMenu.text = win ? "Victory" : "defeat";
+        _textGateLife.text += Gate.Instance.GetLife() + " / " + Gate.Instance.GetMaxLife();
     }
 }
