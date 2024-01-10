@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -17,7 +16,7 @@ public abstract class Enemy : MonoBehaviour
     protected int _radiusCheckStructure = 10;
     protected LayerMask _structureToAttackLayer;
 
-    private Transform _transform;
+    protected Transform _transform;
     private Vector3 _deplacementOffset = Vector2.zero;
     [SerializeField] private List<Transform> _path;
     private int _pathIndex = 0;
@@ -120,6 +119,7 @@ public abstract class Enemy : MonoBehaviour
         {
             b_HasToAttack = Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05;
             _transform.LookAt(structuresCollider[0].transform.position);
+
             /*if (Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05)
             {
                 b_HasToAttack = true;
@@ -141,12 +141,13 @@ public abstract class Enemy : MonoBehaviour
             else
             {
                 _pathIndex += 1;
-                _transform.LookAt(_path[_pathIndex].transform.position);
+                //_transform.LookAt(_path[_pathIndex].transform.position);
             }
         }
         else
         {
             _transform.position = Vector3.MoveTowards(_transform.position, _path[_pathIndex].transform.position, _speed * Time.deltaTime);
+            _transform.LookAt(_path[_pathIndex].transform.position);
             //target.position
         }
     }
@@ -158,15 +159,5 @@ public abstract class Enemy : MonoBehaviour
             Debug.Log("gate take damage");
             yield return new WaitForSeconds(_timeWaitAttack);
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        /*if (collision.transform.TryGetComponent(out Gate gate))
-        {
-            gate.TakeDamage();
-            Death();
-        }
-         */
     }
 }

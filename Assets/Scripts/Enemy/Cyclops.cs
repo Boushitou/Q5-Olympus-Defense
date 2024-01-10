@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Cyclops : Enemy
 {
@@ -39,6 +40,7 @@ public class Cyclops : Enemy
 
             if (towers.Length > 0)
             {
+                _transform.LookAt(towers[0].transform.position);
                 b_IsAttacking = true;
                 StartCoroutine(AttackTower(towers[0].gameObject));
             }

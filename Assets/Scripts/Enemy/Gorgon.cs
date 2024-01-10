@@ -39,6 +39,7 @@ public class Gorgon : Enemy
 
             if (altars.Length > 0)
             {
+                _transform.LookAt(altars[0].transform.position);
                 b_IsAttacking = true;
                 StartCoroutine(AttackAltar(altars[0].gameObject));
             }
