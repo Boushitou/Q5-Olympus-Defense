@@ -163,6 +163,8 @@ public class ConstructionManager : MonoBehaviour
         _faithTxt.text = "Faith : " + _faith;
     }
 
+    public int GetFaith() { return _faith; }
+
     public bool CanBeSelected(Tower tower)
     {
         if (tower.GetCost() <= _faith)
