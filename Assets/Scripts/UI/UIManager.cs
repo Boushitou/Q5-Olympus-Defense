@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenConstructionMenu()
     {
-        _constructionMenu.SetActive(true);
+        _constructionMenu.SetActive(!_constructionMenu.activeSelf);
     }
 
     public void CloseConstructionMenu()
