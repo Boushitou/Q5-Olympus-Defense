@@ -12,35 +12,15 @@ public struct Wave
 
 public class Spawner : MonoBehaviour
 {
-    public static Spawner Instance;
-
     [SerializeField] private Wave[] _waves;
-    public float SpawnTimer;
-    public float WaveTimer;
+    public float SpawnTimer; //Wait time between monsters spawn
 
     private Wave _currentWave;
-    private int _currentWaveNumber = 0;
+    private int _waveNb;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-
-        if (_waves.Length > 0)
-        {
-            _currentWave = _waves[_currentWaveNumber];
-        }
-    }
-
-    private void Start()
-    {
-        StartWave();
+        _waveNb = 0;
     }
 
     public void StartWave()
@@ -52,22 +32,17 @@ public class Spawner : MonoBehaviour
     {
         List<Transform> path = Map.Instance.GetPath(0);
 
+        _currentWave = _waves[_waveNb];
+        _waveNb++;
+
         for (int i = 0; i < _currentWave._enemies.Length; i++)
         {
             GameObject enemy = Instantiate(_currentWave._enemies[i], _currentWave._position, Quaternion.identity);
             enemy.GetComponent<Enemy>().SetPath(path);
 
+            SpawnerManager.Instance.AddEnemiesToTotal();
+
             yield return new WaitForSeconds(SpawnTimer);
-        }
-
-        _currentWaveNumber++;
-        Debug.Log(_currentWaveNumber);
-
-        if (_currentWaveNumber < _waves.Length)
-        {
-            yield return new WaitForSeconds(WaveTimer);
-
-            StartWave();
         }
     }
 }
