@@ -22,11 +22,17 @@ public abstract class Tower : MonoBehaviour
         _enemyMask = LayerMask.GetMask("Enemy");
     }
 
+    private void Start()
+    {
+        InitializeValue();
+    }
+
     private void Update()
     {
         Transform enemy = GetClosestEnemy();
         if (enemy != null)
         {
+            Debug.Log(enemy.name);
             if (Time.time >= _coolDown)
             {
                 Attack(enemy);
