@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ public class ConstructionManager : MonoBehaviour
 
     private int _faith = 200;
     private int _maxFaith = 9999;
+
+    private bool b_canConstruct = false;
 
     private TextMeshProUGUI _faithTxt;
 
@@ -99,7 +102,7 @@ public class ConstructionManager : MonoBehaviour
     {
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _tileLayer, ~_ghostLayer))
         {
-            if (hitInfo.transform.gameObject.CompareTag("Constructible"))
+            if (hitInfo.transform.gameObject.CompareTag("Constructible") && b_canConstruct)
             {
                 Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
 
@@ -110,6 +113,8 @@ public class ConstructionManager : MonoBehaviour
                 UnselectTower();
 
                 hitInfo.transform.gameObject.tag = "Unconstructible";
+
+                b_canConstruct = false;
             }
         }
     }
@@ -121,6 +126,7 @@ public class ConstructionManager : MonoBehaviour
         _currentlySelectedTower = null;
 
         b_isBuilding = false;
+        b_canConstruct = false;
     }
 
     public void SetCurrentlySelectedGhost(GameObject towerGhost)
@@ -135,6 +141,8 @@ public class ConstructionManager : MonoBehaviour
         b_isBuilding = true;
 
         UIManager.Instance.CloseConstructionMenu();
+
+        StartCoroutine(ConstructTimer());
     }
 
     public void SetCurrentlySelectedTower(GameObject tower)
@@ -173,5 +181,17 @@ public class ConstructionManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void SetCanConstruct(bool canConstruct)
+    {
+        b_canConstruct = canConstruct;
+    }
+
+    private IEnumerator ConstructTimer()
+    {
+        yield return new WaitWhile(() => Input.GetMouseButtonUp(0));
+
+        b_canConstruct = true;
     }
 }
