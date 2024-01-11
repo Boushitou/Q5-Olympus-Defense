@@ -2205,6 +2205,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2598704439868930983, guid: b5961e3e05dc54548b0bc010e66ffc03, type: 3}
+      propertyPath: _maxLife
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 2881329689598554190, guid: b5961e3e05dc54548b0bc010e66ffc03, type: 3}
       propertyPath: m_Name
       value: Gate
