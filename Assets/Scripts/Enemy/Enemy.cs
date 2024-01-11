@@ -74,7 +74,13 @@ public abstract class Enemy : MonoBehaviour
     }
 
     private void Death()
-    { Destroy(gameObject); }
+    { 
+        SpawnerManager.Instance.IncreaseTotalEnemiesKilled();
+        SpawnerManager.Instance.RemoveEnemiesFromTotal();
+        ConstructionManager.Instance.AddFaith(_belief);
+
+        Destroy(gameObject); 
+    }
 
     protected abstract void Attack();
 

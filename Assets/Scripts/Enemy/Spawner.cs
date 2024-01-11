@@ -45,4 +45,9 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(SpawnTimer);
         }
     }
+
+    public int GetWavesCount()
+    {
+        return _waves.Length;
+    }
 }

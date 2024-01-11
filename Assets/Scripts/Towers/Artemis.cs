@@ -9,7 +9,7 @@ public class Artemis : Tower
             Vector3 direction = (enemy.position - _myTransform.position).normalized;
             GameObject arrow = Instantiate(Projectile, Origin.position, Quaternion.LookRotation(direction));
 
-            arrow.GetComponent<Projectile>().SetEnemy(enemy);
+            arrow.GetComponent<Projectile>().SetValues(enemy, _damage);
         }
     }
 
