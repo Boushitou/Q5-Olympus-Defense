@@ -14,4 +14,9 @@ public class Arrow : Projectile
         _myTransform.position += direction * _speed * Time.deltaTime;
         _myTransform.rotation = Quaternion.LookRotation(direction);
     }
+
+    public override void Effect()
+    {
+        _enemy.GetComponent<Enemy>().TakeDamage(_damage);
+    }
 }

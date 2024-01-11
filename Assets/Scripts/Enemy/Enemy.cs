@@ -22,11 +22,18 @@ public abstract class Enemy : MonoBehaviour
     private int _pathIndex = 0;
     private Vector3 _target = Vector3.zero;
 
+    private bool b_isSlowed;
+    private float _slowDuration = 1f;
+    private float _slowTime = 0f;
+
+    private float _originalSpeed;
+
     private void Start()
     {
         _transform = transform;
 
         _target = _path[0].transform.position + _deplacementOffset;
+        _originalSpeed = _speed;
     }
 
     private void Update()
@@ -38,6 +45,18 @@ public abstract class Enemy : MonoBehaviour
         else
         {
             Move();
+        }
+
+        if (b_isSlowed)
+        {
+            _slowTime += Time.deltaTime;
+
+            if (_slowTime >= _slowDuration)
+            {
+                _speed = _originalSpeed;
+                _slowTime = 0f;
+                b_isSlowed = false;
+            }
         }
     }
 
@@ -150,6 +169,14 @@ public abstract class Enemy : MonoBehaviour
             _transform.LookAt(_path[_pathIndex].transform.position);
             //target.position
         }
+    }
+
+    public void Slowed(float slowAmount)
+    {
+        _speed = _speed < 0 ? 1 : slowAmount;
+        b_isSlowed = true;
+
+        Debug.Log("slow");
     }
 
     private IEnumerator AttackGate()
