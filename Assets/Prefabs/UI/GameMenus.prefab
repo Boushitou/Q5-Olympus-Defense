@@ -148,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5474055548890264829
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 8974095964290305199}
   - component: {fileID: 5738799655733294974}
   m_Layer: 5
-  m_Name: MenusGame
+  m_Name: GameMenus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
