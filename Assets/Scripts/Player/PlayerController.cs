@@ -23,7 +23,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnZoom(InputAction.CallbackContext context)
     {
-        _playerMovement.SetZoom(context.ReadValue<float>());
+        float zoom = -context.ReadValue<float>();
+        zoom = zoom > 0 ? 1 : zoom < 0 ? -1 : 0;
+        _playerMovement.SetZoom(zoom);
     }
 
     public void OnPause(InputAction.CallbackContext context)
