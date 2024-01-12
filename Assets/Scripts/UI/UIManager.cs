@@ -8,13 +8,16 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject _constructionMenu;
     [SerializeField] private Image _gateLifeImageSlidder;
-    [SerializeField] private GameObject _killWavesStatut;
+    [SerializeField] private TextMeshProUGUI _gateLifeText;
 
+    [Header("GameOver")]
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private TextMeshProUGUI _textGameOverMenu;
     [SerializeField] private TextMeshProUGUI _textGateLife;
     [SerializeField] private TextMeshProUGUI _textKills;
 
+    [Header("Wave")]
+    [SerializeField] private GameObject _killWavesStatut;
     private TextMeshProUGUI _wavesTxt;
     private TextMeshProUGUI _killTxt;
 
@@ -38,6 +41,7 @@ public class UIManager : MonoBehaviour
     public void UpdateGateLife(int maxLife, int life)
     {
         _gateLifeImageSlidder.fillAmount = (float)life / maxLife;
+        _gateLifeText.text = life + " / " + maxLife;
     }
 
     public void UpdateWavesTxt(int currentWave, int totalWave)
