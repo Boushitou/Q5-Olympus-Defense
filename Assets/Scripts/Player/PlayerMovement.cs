@@ -31,6 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetZoom(float zoom)
     {
-        _direction.y = zoom;
+        _direction.y = -zoom;
     }
 }
