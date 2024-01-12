@@ -106,8 +106,8 @@ public class ConstructionManager : MonoBehaviour
             {
                 Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
 
-                GameObject tower = Instantiate(_currentlySelectedTower, tilePos, Quaternion.identity);
-                tower.GetComponent<Tower>().SetTile(hitInfo.transform.gameObject);
+                GameObject tile = Instantiate(_currentlySelectedTower, tilePos, Quaternion.identity);
+                tile.GetComponent<Tower>().SetTile(hitInfo.transform.gameObject);
 
                 _currentlySelectedTower.GetComponent<Tower>().InitializeValue();
                 RemoveFaith(_currentlySelectedTower.GetComponent<Tower>().GetCost());

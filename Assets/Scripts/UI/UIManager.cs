@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
         _timeRemaining.text = "Next wave in : " + timeRemaining;
     }
 
-    public void ShowTimeRemaining(bool isShown)
+    public void OpenCloseTimeRemaining(bool isShown)
     {
         _timeRemaining.gameObject.SetActive(isShown);
     }

@@ -42,7 +42,7 @@ public class SpawnerManager : MonoBehaviour
 
     private void Update()
     {
-        if (_timeRemaining > 0 && _currentWaveNumber - 1 < _totalWavesNumber)
+        if (_timeRemaining > 0)
         {
             _timeRemaining -= Time.deltaTime;
 
@@ -50,8 +50,7 @@ public class SpawnerManager : MonoBehaviour
 
             if (_timeRemaining <= 0)
             {
-                UIManager.Instance.ShowTimeRemaining(false);
-                _timeRemaining = 0;
+                UIManager.Instance.OpenCloseTimeRemaining(false);
             }
         }
     }
@@ -84,6 +83,10 @@ public class SpawnerManager : MonoBehaviour
                 spawner.StartWave();
                 _currentWaveNumber++;
             }
+            else
+            {
+                GameManager.Instance.GameOver(true);
+            }
         }
     }
 
@@ -93,12 +96,11 @@ public class SpawnerManager : MonoBehaviour
 
         if (_currentWaveNumber - 1 < _totalWavesNumber)
         {
-            UIManager.Instance.ShowTimeRemaining(true);
+            UIManager.Instance.OpenCloseTimeRemaining(true);
         }
 
         yield return new WaitForSeconds(WaveTimer);
 
-        _enemiesLeft = 0;
         StartSpawn();
     }
 
@@ -113,10 +115,7 @@ public class SpawnerManager : MonoBehaviour
 
         if (_enemiesLeft <= 0)
         {
-            if (_currentWaveNumber - 1 == _totalWavesNumber)
-            {
-                GameManager.Instance.GameOver(win : true);
-            }
+            _enemiesLeft = 0;
             StartCoroutine(NextWavePreparation());
         }
     }

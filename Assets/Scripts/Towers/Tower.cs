@@ -12,7 +12,6 @@ public abstract class Tower : MonoBehaviour
 
     private float _coolDown = 0f;
     private LayerMask _enemyMask;
-
     private GameObject _tile;
 
     [SerializeField] public GameObject Projectile;
@@ -34,6 +33,7 @@ public abstract class Tower : MonoBehaviour
         Transform enemy = GetClosestEnemy();
         if (enemy != null)
         {
+            Debug.Log(enemy.name);
             if (Time.time >= _coolDown)
             {
                 Attack(enemy);
@@ -60,13 +60,17 @@ public abstract class Tower : MonoBehaviour
             }
         }
 
+        if (closestEnemy != null)
+        {
+            Debug.Log(closestEnemy.name);
+        }
+
         return closestEnemy;
     }
 
     public void TakeDamage(int damage)
     {
         _health -= damage;
-
         if (_health <= 0)
         {
             _tile.tag = "Constructible";
@@ -84,6 +88,5 @@ public abstract class Tower : MonoBehaviour
     public abstract void Attack(Transform enemy);
 
     public int GetCost() { return _cost; }
-
     public int GetHealth() { return _health; }
 }

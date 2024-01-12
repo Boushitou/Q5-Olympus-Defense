@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -38,15 +37,10 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < _currentWave._enemies.Length; i++)
         {
-            SpawnerManager.Instance.AddEnemiesToTotal();
-        }
-
-        for (int i = 0; i < _currentWave._enemies.Length; i++)
-        {
             GameObject enemy = Instantiate(_currentWave._enemies[i], _currentWave._spawnPoint.position, Quaternion.identity);
             enemy.GetComponent<Enemy>().SetPath(path);
 
-
+            SpawnerManager.Instance.AddEnemiesToTotal();
 
             yield return new WaitForSeconds(SpawnTimer);
         }
