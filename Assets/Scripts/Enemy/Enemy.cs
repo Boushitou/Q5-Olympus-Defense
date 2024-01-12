@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -21,6 +22,8 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> _path;
     private int _pathIndex = 0;
     private Vector3 _target = Vector3.zero;
+
+    private bool b_isDead = false;
 
     private void Start()
     {
@@ -69,17 +72,20 @@ public abstract class Enemy : MonoBehaviour
     { 
         _life -= damage; 
 
-        if ( _life <= 0 )
+        if ( _life <= 0 && !b_isDead)
             Death();
+
     }
 
     private void Death()
-    { 
+    {
+        b_isDead = true;
+
         SpawnerManager.Instance.IncreaseTotalEnemiesKilled();
         SpawnerManager.Instance.RemoveEnemiesFromTotal();
         ConstructionManager.Instance.AddFaith(_belief);
 
-        Destroy(gameObject); 
+        Destroy(gameObject);
     }
 
     protected abstract void Attack();

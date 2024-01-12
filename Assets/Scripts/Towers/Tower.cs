@@ -67,9 +67,21 @@ public abstract class Tower : MonoBehaviour
         return closestEnemy;
     }
 
+    public void TakeDamage(int damage)
+    {
+        _health -= damage;
+
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public abstract void InitializeValue();
 
     public abstract void Attack(Transform enemy);
 
     public int GetCost() { return _cost; }
+
+    public int GetHealth() { return _health; }
 }

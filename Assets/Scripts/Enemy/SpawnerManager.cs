@@ -78,6 +78,7 @@ public class SpawnerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(WaveTimer);
 
+        _enemiesLeft = 0;
         StartSpawn();
     }
 
@@ -92,7 +93,6 @@ public class SpawnerManager : MonoBehaviour
 
         if (_enemiesLeft <= 0)
         {
-            _enemiesLeft = 0;
             StartCoroutine(NextWavePreparation());
         }
     }
