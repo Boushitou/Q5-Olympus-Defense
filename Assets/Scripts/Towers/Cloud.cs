@@ -5,7 +5,7 @@ public class Cloud : Projectile
     private Vector3 _enemyLastPos;
     private Vector3 _destinationPos;
 
-    private float _duration = 2f;
+    private float _duration = 3f;
     private float _time = 0f;
 
     private void Start()

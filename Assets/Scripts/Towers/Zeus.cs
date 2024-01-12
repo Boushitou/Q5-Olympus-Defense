@@ -7,7 +7,7 @@ public class Zeus : Tower
         if (Projectile != null)
         {
             Vector3 direction = (enemy.position - _myTransform.position).normalized;
-            GameObject cloud = Instantiate(Projectile, Origin.position + (Vector3.up * 5f), Quaternion.LookRotation(direction));
+            GameObject cloud = Instantiate(Projectile, Origin.position, Quaternion.LookRotation(direction));
 
             cloud.GetComponent<Projectile>().SetValues(enemy, _damage);
         }
@@ -15,10 +15,10 @@ public class Zeus : Tower
 
     public override void InitializeValue()
     {
-        _health = 200;
+        _maxHealth = 200;
         _damage = 20;
-        _atkSpeed = 2f;
+        _atkSpeed = 3f;
         _range = 12f;
-        _cost = 1;
+        _cost = 400;
     }
 }
