@@ -12,6 +12,7 @@ public class SpawnerManager : MonoBehaviour
     private List<Spawner> _spawners = new List<Spawner>();
     private int _currentWaveNumber;
     private int _totalWavesNumber;
+    private float _timeRemaining = 0;
 
     private int _enemiesLeft;
     private int _totalEnemiesKilled = 0;
@@ -37,6 +38,22 @@ public class SpawnerManager : MonoBehaviour
         UIManager.Instance.UpdateWavesTxt(_currentWaveNumber, _totalWavesNumber);
         UIManager.Instance.UpdateKillTxt(_totalEnemiesKilled);
         StartCoroutine(NextWavePreparation());
+    }
+
+    private void Update()
+    {
+        if (_timeRemaining > 0 && _currentWaveNumber - 1 < _totalWavesNumber)
+        {
+            _timeRemaining -= Time.deltaTime;
+
+            UIManager.Instance.UpdateTimeRemaining((int)_timeRemaining);
+
+            if (_timeRemaining <= 0)
+            {
+                UIManager.Instance.ShowTimeRemaining(false);
+                _timeRemaining = 0;
+            }
+        }
     }
 
     private void InitializeMapSpawners()
@@ -67,15 +84,13 @@ public class SpawnerManager : MonoBehaviour
                 spawner.StartWave();
                 _currentWaveNumber++;
             }
-            else
-            {
-                GameManager.Instance.GameOver(true);
-            }
         }
     }
 
     private IEnumerator NextWavePreparation()
     {
+        _timeRemaining = WaveTimer;
+        UIManager.Instance.ShowTimeRemaining(true);
         yield return new WaitForSeconds(WaveTimer);
 
         _enemiesLeft = 0;
@@ -93,6 +108,10 @@ public class SpawnerManager : MonoBehaviour
 
         if (_enemiesLeft <= 0)
         {
+            if (_currentWaveNumber - 1 == _totalWavesNumber)
+            {
+                GameManager.Instance.GameOver(win : true);
+            }
             StartCoroutine(NextWavePreparation());
         }
     }

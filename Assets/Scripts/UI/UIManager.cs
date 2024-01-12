@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _killWavesStatut;
     private TextMeshProUGUI _wavesTxt;
     private TextMeshProUGUI _killTxt;
+    private TextMeshProUGUI _timeRemaining;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class UIManager : MonoBehaviour
 
         _wavesTxt = _killWavesStatut.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         _killTxt = _killWavesStatut.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        _timeRemaining = _killWavesStatut.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -57,6 +59,16 @@ public class UIManager : MonoBehaviour
     public void UpdateKillTxt(int totalKilled)
     {
         _killTxt.text = "Kill : " + totalKilled;
+    }
+
+    public void UpdateTimeRemaining(int timeRemaining)
+    {
+        _timeRemaining.text = "Next wave in : " + timeRemaining;
+    }
+
+    public void ShowTimeRemaining(bool isShown)
+    {
+        _timeRemaining.gameObject.SetActive(isShown);
     }
 
     public void OpenConstructionMenu()
