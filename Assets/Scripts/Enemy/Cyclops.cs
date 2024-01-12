@@ -6,7 +6,8 @@ public class Cyclops : Enemy
 {
     private void Awake()
     {
-        _life = 200;
+        _maxLife = 200;
+        _life = _maxLife;
         _speed = 3;
         _damage = 10;
         _timeWaitAttack = 1;

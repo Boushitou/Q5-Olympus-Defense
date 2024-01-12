@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     protected int _life = 1;
+    protected int _maxLife = 1;
     protected float _speed = 1;
     protected int _damage = 1;
     protected float _timeWaitAttack = 1;
@@ -21,6 +23,8 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> _path;
     private int _pathIndex = 0;
     private Vector3 _target = Vector3.zero;
+
+    [SerializeField] private LifeBar _lifeBar;
 
     private void Start()
     {
@@ -43,6 +47,9 @@ public abstract class Enemy : MonoBehaviour
 
     public int GetLife()
     { return _life; }
+
+    public int GetMaxLife()
+    { return _maxLife; }
 
     public float GetSpeed() 
     { return _speed;}
@@ -67,7 +74,8 @@ public abstract class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     { 
-        _life -= damage; 
+        _life -= damage;
+        _lifeBar.UpdateLife(_maxLife, _life);
 
         if ( _life <= 0 )
             Death();
