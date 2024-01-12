@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     protected int _life = 1;
+    protected int _maxLife = 1;
     protected float _speed = 1;
     protected int _damage = 1;
     protected float _timeWaitAttack = 1;
@@ -22,18 +24,13 @@ public abstract class Enemy : MonoBehaviour
     private int _pathIndex = 0;
     private Vector3 _target = Vector3.zero;
 
-    private bool b_isSlowed;
-    private float _slowDuration = 1f;
-    private float _slowTime = 0f;
-
-    private float _originalSpeed;
+    [SerializeField] private LifeBar _lifeBar;
 
     private void Start()
     {
         _transform = transform;
 
         _target = _path[0].transform.position + _deplacementOffset;
-        _originalSpeed = _speed;
     }
 
     private void Update()
@@ -46,22 +43,13 @@ public abstract class Enemy : MonoBehaviour
         {
             Move();
         }
-
-        if (b_isSlowed)
-        {
-            _slowTime += Time.deltaTime;
-
-            if (_slowTime >= _slowDuration)
-            {
-                _speed = _originalSpeed;
-                _slowTime = 0f;
-                b_isSlowed = false;
-            }
-        }
     }
 
     public int GetLife()
     { return _life; }
+
+    public int GetMaxLife()
+    { return _maxLife; }
 
     public float GetSpeed() 
     { return _speed;}
@@ -86,7 +74,8 @@ public abstract class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     { 
-        _life -= damage; 
+        _life -= damage;
+        _lifeBar.UpdateLife(_maxLife, _life);
 
         if ( _life <= 0 )
             Death();
@@ -169,14 +158,6 @@ public abstract class Enemy : MonoBehaviour
             _transform.LookAt(_path[_pathIndex].transform.position);
             //target.position
         }
-    }
-
-    public void Slowed(float slowAmount)
-    {
-        _speed = _speed < 0 ? 1 : slowAmount;
-        b_isSlowed = true;
-
-        Debug.Log("slow");
     }
 
     private IEnumerator AttackGate()

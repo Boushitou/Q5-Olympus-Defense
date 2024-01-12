@@ -5,7 +5,8 @@ public class Gorgon : Enemy
 {
     private void Awake()
     {
-        _life = 100;
+        _maxLife = 100;
+        _life = _maxLife;
         _speed = 5;
         _damage = 5;
         _timeWaitAttack = 0.5f;
