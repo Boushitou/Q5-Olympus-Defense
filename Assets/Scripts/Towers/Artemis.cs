@@ -15,7 +15,7 @@ public class Artemis : Tower
 
     public override void InitializeValue()
     {
-        _health = 50;
+        _maxHealth = 50;
         _damage = 15;
         _cost = 100;
         _atkSpeed = 0.3f;

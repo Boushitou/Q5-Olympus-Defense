@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 3177918655579650170, guid: 349cab79dc460f746be9da588bd3af3b, type: 3}
   Origin: {fileID: 8114504129142874143}
+  _lifeBar: {fileID: 1828494217811695057}
 --- !u!65 &2108233210199121504
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -282,6 +283,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb6a17274a285b41a51d723de669127, type: 3}
+--- !u!114 &1828494217811695057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6507582898436079837, guid: acb6a17274a285b41a51d723de669127, type: 3}
+  m_PrefabInstance: {fileID: 4841239751710545164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebf5fbcc263cb04d88899c05770a055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7427691297707632947 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2610957515116690495, guid: acb6a17274a285b41a51d723de669127, type: 3}

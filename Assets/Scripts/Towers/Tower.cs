@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
 {
+    protected int _maxHealth;
     protected int _health;
     protected int _damage;
     protected int _cost;
@@ -16,6 +17,7 @@ public abstract class Tower : MonoBehaviour
 
     [SerializeField] public GameObject Projectile;
     [SerializeField] public Transform Origin;
+    [SerializeField] private LifeBar _lifeBar;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public abstract class Tower : MonoBehaviour
     private void Start()
     {
         InitializeValue();
+        _health = _maxHealth;
     }
 
     private void Update()
@@ -71,6 +74,9 @@ public abstract class Tower : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
+
+        _lifeBar.UpdateLife(_maxHealth, _health);
+
         if (_health <= 0)
         {
             _tile.tag = "Constructible";
