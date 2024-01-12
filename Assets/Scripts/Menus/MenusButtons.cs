@@ -57,6 +57,7 @@ public class MenusButtons : MonoBehaviour
 
     public void ButtonMainMenu()
     {
+        GameManager.Instance.PauseGame();
         SceneManager.LoadScene("MainMenu");
     }
 

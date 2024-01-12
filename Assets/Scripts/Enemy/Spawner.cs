@@ -7,7 +7,7 @@ public struct Wave
 {
     public string _waveName;
     public GameObject[] _enemies;
-    public Vector3 _position;
+    public Transform _spawnPoint;
 }
 
 public class Spawner : MonoBehaviour
@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < _currentWave._enemies.Length; i++)
         {
-            GameObject enemy = Instantiate(_currentWave._enemies[i], _currentWave._position, Quaternion.identity);
+            GameObject enemy = Instantiate(_currentWave._enemies[i], _currentWave._spawnPoint.position, Quaternion.identity);
             enemy.GetComponent<Enemy>().SetPath(path);
 
             SpawnerManager.Instance.AddEnemiesToTotal();

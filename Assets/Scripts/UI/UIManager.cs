@@ -38,6 +38,11 @@ public class UIManager : MonoBehaviour
         _killTxt = _killWavesStatut.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
 
+    private void Start()
+    {
+        UpdateGateLife(Gate.Instance.GetMaxLife(), Gate.Instance.GetLife());
+    }
+
     public void UpdateGateLife(int maxLife, int life)
     {
         _gateLifeImageSlidder.fillAmount = (float)life / maxLife;
@@ -69,5 +74,6 @@ public class UIManager : MonoBehaviour
         _gameOverMenu.SetActive(true);
         _textGameOverMenu.text = win ? "Victory" : "Defeat";
         _textGateLife.text += Gate.Instance.GetLife() + " / " + Gate.Instance.GetMaxLife();
+        _textKills.text += SpawnerManager.Instance.GetTotalEnemiesKilled();
     }
 }
