@@ -90,7 +90,12 @@ public class SpawnerManager : MonoBehaviour
     private IEnumerator NextWavePreparation()
     {
         _timeRemaining = WaveTimer;
-        UIManager.Instance.ShowTimeRemaining(true);
+
+        if (_currentWaveNumber - 1 < _totalWavesNumber)
+        {
+            UIManager.Instance.ShowTimeRemaining(true);
+        }
+
         yield return new WaitForSeconds(WaveTimer);
 
         _enemiesLeft = 0;
