@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class Gate : MonoBehaviour
@@ -18,6 +19,7 @@ public class Gate : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _life -= damage;
+        _life = _life < 0 ? 0 : _life;
 
         UIManager.Instance.UpdateGateLife(_maxLife, _life);
 

@@ -3,8 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class MenusButtons : MonoBehaviour
 {
+    public static MenusButtons Instance;
+
     [SerializeField] private GameObject _menuChooseLevel;
     [SerializeField] private GameObject _menuPause;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     public void ButtonPlay()
     {
@@ -49,6 +57,7 @@ public class MenusButtons : MonoBehaviour
 
     public void ButtonMainMenu()
     {
+        GameManager.Instance.PauseGame();
         SceneManager.LoadScene("MainMenu");
     }
 
