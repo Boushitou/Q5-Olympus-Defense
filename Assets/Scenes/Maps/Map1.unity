@@ -304,14 +304,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 504811438050942019, guid: 04adda17990769a489482db4e2360269, type: 3}
-      propertyPath: SpawnTimer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1289843305099674754, guid: 04adda17990769a489482db4e2360269, type: 3}
-      propertyPath: WaveTimer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5282472412138596207, guid: 04adda17990769a489482db4e2360269, type: 3}
       propertyPath: m_Name
       value: Map1

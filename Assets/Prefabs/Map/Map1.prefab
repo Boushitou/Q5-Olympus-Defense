@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca7e98004b890949b4ef46b00a9c95b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveTimer: 0
+  WaveTimer: 10
 --- !u!1 &3807511598474498916
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ MonoBehaviour:
     - {fileID: 6917676906797004979, guid: 746c57a378131a44fb9c95c0fb6d98bc, type: 3}
     - {fileID: 6917676906797004979, guid: 746c57a378131a44fb9c95c0fb6d98bc, type: 3}
     _spawnPoint: {fileID: 7199669810507382733}
-  SpawnTimer: 0
+  SpawnTimer: 1
 --- !u!1 &8439716065325816127
 GameObject:
   m_ObjectHideFlags: 0
