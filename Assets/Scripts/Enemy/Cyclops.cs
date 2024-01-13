@@ -27,7 +27,6 @@ public class Cyclops : Enemy
         }
 
         return towers;
-
     }
 
     protected override void Attack()
@@ -50,7 +49,6 @@ public class Cyclops : Enemy
         while (tower.GetHealth() > 0)
         {
             tower.TakeDamage(_damage);
-            Debug.Log(Vector3.Distance(tower.transform.position, transform.position));
             yield return new WaitForSeconds(_timeWaitAttack);
         }
 

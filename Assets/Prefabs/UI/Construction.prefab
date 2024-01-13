@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1169152747549925538
 RectTransform:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -207,7 +207,7 @@ MonoBehaviour:
         m_MethodName: SetCurrentlySelectedGhost
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8760124691915522467, guid: cbe49cdc24b52fa4186913b1fdff1e0b, type: 3}
+          m_ObjectArgument: {fileID: 3118220270665504023, guid: a0255e9f2cb5b7d4abb4ea3d11194df6, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
         m_MethodName: SetCurrentlySelectedTower
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6461211934300002725, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
+          m_ObjectArgument: {fileID: 8700379963153082773, guid: 9c00633aca142ff4594448da960e0abd, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d89d73fb0524149921fff885e92dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tower: {fileID: 8544175537379896834, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
+  _tower: {fileID: 3231961978356889787, guid: 9c00633aca142ff4594448da960e0abd, type: 3}
 --- !u!1 &1394679479358666475
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &156361666350645760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -745,7 +745,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -769,7 +769,7 @@ MonoBehaviour:
         m_MethodName: SetCurrentlySelectedGhost
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8760124691915522467, guid: cbe49cdc24b52fa4186913b1fdff1e0b, type: 3}
+          m_ObjectArgument: {fileID: 7476788480356041713, guid: 971b777ab65e22847bc9eec10ddce7e1, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -781,7 +781,7 @@ MonoBehaviour:
         m_MethodName: SetCurrentlySelectedTower
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6461211934300002725, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
+          m_ObjectArgument: {fileID: 8700379963153082773, guid: aea8ba42c35ff31408a02a4416b044d4, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d89d73fb0524149921fff885e92dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tower: {fileID: 8544175537379896834, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
+  _tower: {fileID: 489789700105346823, guid: aea8ba42c35ff31408a02a4416b044d4, type: 3}
 --- !u!1 &2966002366609606310
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3581015939751930342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -905,7 +905,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -929,7 +929,7 @@ MonoBehaviour:
         m_MethodName: SetCurrentlySelectedGhost
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8760124691915522467, guid: cbe49cdc24b52fa4186913b1fdff1e0b, type: 3}
+          m_ObjectArgument: {fileID: 5356699738278534632, guid: 12f9239500e3d004db62ca25214554f0, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -941,7 +941,7 @@ MonoBehaviour:
         m_MethodName: SetCurrentlySelectedTower
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6461211934300002725, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
+          m_ObjectArgument: {fileID: 3098258242080663411, guid: f7747573b5e1fa2488b363f30e3303a9, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d89d73fb0524149921fff885e92dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tower: {fileID: 8544175537379896834, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
+  _tower: {fileID: 2639770385317531285, guid: f7747573b5e1fa2488b363f30e3303a9, type: 3}
 --- !u!1 &3875202912798669535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,7 +1165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8267350110468513931
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1250,7 +1250,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1274,7 +1274,7 @@ MonoBehaviour:
         m_MethodName: SetCurrentlySelectedGhost
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8760124691915522467, guid: cbe49cdc24b52fa4186913b1fdff1e0b, type: 3}
+          m_ObjectArgument: {fileID: 8700379963153082773, guid: 019714410958549428212e77773e39b8, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1286,7 +1286,7 @@ MonoBehaviour:
         m_MethodName: SetCurrentlySelectedTower
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6461211934300002725, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
+          m_ObjectArgument: {fileID: 8700379963153082773, guid: e067a3f7a2630b343a20e7c9ab3d0a96, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d89d73fb0524149921fff885e92dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tower: {fileID: 8544175537379896834, guid: aca80c77c4804b04aae4c93d3f5008a5, type: 3}
+  _tower: {fileID: -4054255837998235955, guid: e067a3f7a2630b343a20e7c9ab3d0a96, type: 3}
 --- !u!1 &6694067434557240628
 GameObject:
   m_ObjectHideFlags: 0

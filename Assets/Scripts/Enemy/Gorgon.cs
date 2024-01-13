@@ -15,43 +15,40 @@ public class Gorgon : Enemy
         _structureToAttackLayer = LayerMask.GetMask("Altar");
     }
 
-    private Collider[] /*Altar[]*/ GetAltarsAround()
+    private Altar[] GetAltarsAround()
     {
-        /*Collider[] altarsCollider = Physics.OverlapSphere(transform.position, _radiusCheckStructure, _structureToAttackLayer);
-        
+        Collider[] altarsCollider = Physics.OverlapSphere(transform.position, _radiusCheckStructure, _structureToAttackLayer);
+
         Altar[] altars = new Altar[altarsCollider.Length];
 
         for (int i = 0; i < altarsCollider.Length; i++)
         {
-            altars[i] = altarsCollider.GetComponent<Altar>();
+            altars[i] = altarsCollider[i].GetComponent<Altar>();
         }
 
         return altars;
-        */
-
-        return Physics.OverlapSphere(transform.position, _radiusCheckStructure, _structureToAttackLayer);
     }
 
     protected override void Attack() 
     { 
         if (!b_IsAttacking)
         {
-            Collider[] altars = GetAltarsAround();
+            Altar[] altars = GetAltarsAround();
 
             if (altars.Length > 0)
             {
                 _transform.LookAt(altars[0].transform.position);
                 b_IsAttacking = true;
-                StartCoroutine(AttackAltar(altars[0].gameObject));
+                StartCoroutine(AttackAltar(altars[0]));
             }
         }
     }
 
-    private IEnumerator AttackAltar(GameObject altar)
+    private IEnumerator AttackAltar(Altar altar)
     {
-        while (altar.activeSelf)
+        while (altar.GetHealth() > 0)
         {
-            Debug.Log("altar take damage");
+            altar.TakeDamage(_damage);
             yield return new WaitForSeconds(_timeWaitAttack);
         }
 
