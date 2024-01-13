@@ -779,6 +779,10 @@ PrefabInstance:
       propertyPath: _tower
       value: 
       objectReference: {fileID: 489789700105346823, guid: aea8ba42c35ff31408a02a4416b044d4, type: 3}
+    - target: {fileID: 1848153201475692688, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8700379963153082773, guid: e067a3f7a2630b343a20e7c9ab3d0a96, type: 3}
     - target: {fileID: 3586879181331719575, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -866,6 +870,14 @@ PrefabInstance:
     - target: {fileID: 6120303862000323010, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6379882974312206157, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
+      propertyPath: _tower
+      value: 
+      objectReference: {fileID: -4054255837998235955, guid: e067a3f7a2630b343a20e7c9ab3d0a96, type: 3}
+    - target: {fileID: 6691600580449257822, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8631569240025043215, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument

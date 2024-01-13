@@ -31,6 +31,8 @@ public abstract class Enemy : MonoBehaviour
     private float _slowTime = 0;
     private float _originalSpeed;
 
+    private bool b_isDead = false;
+
     private void Start()
     {
         _transform = transform;
@@ -91,12 +93,14 @@ public abstract class Enemy : MonoBehaviour
         _life -= damage;
         _lifeBar.UpdateLife(_maxLife, _life);
 
-        if ( _life <= 0 )
+        if (_life <= 0 && !b_isDead)
             Death();
     }
 
     private void Death()
     { 
+        b_isDead = true;
+
         SpawnerManager.Instance.IncreaseTotalEnemiesKilled();
         SpawnerManager.Instance.RemoveEnemiesFromTotal();
         ConstructionManager.Instance.AddFaith(_belief);

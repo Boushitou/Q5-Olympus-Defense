@@ -83,10 +83,6 @@ public class SpawnerManager : MonoBehaviour
                 spawner.StartWave();
                 _currentWaveNumber++;
             }
-            else
-            {
-                GameManager.Instance.GameOver(true);
-            }
         }
     }
 
@@ -97,6 +93,10 @@ public class SpawnerManager : MonoBehaviour
         if (_currentWaveNumber - 1 < _totalWavesNumber)
         {
             UIManager.Instance.OpenCloseTimeRemaining(true);
+        }
+        else
+        {
+            GameManager.Instance.GameOver(true);
         }
 
         yield return new WaitForSeconds(WaveTimer);
@@ -112,6 +112,7 @@ public class SpawnerManager : MonoBehaviour
     public void RemoveEnemiesFromTotal()
     {  
         _enemiesLeft--;
+        Debug.Log("enemies left : " + _enemiesLeft);
 
         if (_enemiesLeft <= 0)
         {

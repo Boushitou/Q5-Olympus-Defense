@@ -38,6 +38,7 @@ public class Spawner : MonoBehaviour
         _waveNb++;
 
         SpawnerManager.Instance.AddEnemiesToTotal(_currentWave._enemies.Length);
+        Debug.Log(_currentWave._enemies.Length);
 
         for (int i = 0; i < _currentWave._enemies.Length; i++)
         {
