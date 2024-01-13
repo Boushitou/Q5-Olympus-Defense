@@ -18,7 +18,7 @@ public class Artemis : Tower
         _maxHealth = 50;
         _damage = 15;
         _cost = 100;
-        _atkSpeed = 0.3f;
+        _atkSpeed = 0.5f;
         _range = 20f;
     }
 }
