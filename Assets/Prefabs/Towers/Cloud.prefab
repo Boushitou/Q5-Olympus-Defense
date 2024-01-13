@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 445070909164617823}
   - component: {fileID: 9016424137517490154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DamageZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 7246877580672213148}
   - component: {fileID: 5619873443101745347}
   - component: {fileID: 7391357352805213162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}

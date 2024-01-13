@@ -37,7 +37,6 @@ public abstract class Tower : MonoBehaviour
         Transform enemy = GetClosestEnemy();
         if (enemy != null)
         {
-            Debug.Log(enemy.name);
             if (Time.time >= _coolDown)
             {
                 Attack(enemy);
@@ -62,11 +61,6 @@ public abstract class Tower : MonoBehaviour
                 closestDist = dist;
                 closestEnemy = collider.transform;
             }
-        }
-
-        if (closestEnemy != null)
-        {
-            Debug.Log(closestEnemy.name);
         }
 
         return closestEnemy;

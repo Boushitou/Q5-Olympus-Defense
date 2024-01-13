@@ -112,7 +112,6 @@ public class SpawnerManager : MonoBehaviour
     public void RemoveEnemiesFromTotal()
     {  
         _enemiesLeft--;
-        Debug.Log("enemies left : " + _enemiesLeft);
 
         if (_enemiesLeft <= 0)
         {
