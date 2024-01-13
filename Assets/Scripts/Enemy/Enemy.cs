@@ -26,10 +26,15 @@ public abstract class Enemy : MonoBehaviour
 
     [SerializeField] private LifeBar _lifeBar;
 
+    private bool b_isSlowed;
+    private float _slowDuration = 2f;
+    private float _slowTime = 0;
+    private float _originalSpeed;
+
     private void Start()
     {
         _transform = transform;
-
+        _originalSpeed = _speed;
         _target = _path[0].transform.position + _deplacementOffset;
     }
 
@@ -42,6 +47,15 @@ public abstract class Enemy : MonoBehaviour
         else
         {
             Move();
+        }
+
+        if (b_isSlowed)
+        {
+            if (Time.time > _slowTime)
+            {
+                b_isSlowed = false;
+                _speed = _originalSpeed;
+            }
         }
     }
 
@@ -88,6 +102,17 @@ public abstract class Enemy : MonoBehaviour
         ConstructionManager.Instance.AddFaith(_belief);
 
         Destroy(gameObject); 
+    }
+
+    public void Slowed(float slowAmount)
+    {
+        _speed -= slowAmount;
+
+        if (_speed <= 0)
+            _speed = 1f;
+
+        _slowTime = Time.time + _slowDuration;
+        b_isSlowed = true;
     }
 
     protected abstract void Attack();

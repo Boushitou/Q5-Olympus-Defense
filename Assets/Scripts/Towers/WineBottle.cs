@@ -31,7 +31,7 @@ public class WineBottle : Projectile
         {
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
 
-            enemy.Slowed(2);
+            enemy.Slowed(2f);
             _enemy.GetComponent<Enemy>().TakeDamage(_damage);
         }
     }

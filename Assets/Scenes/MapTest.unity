@@ -465,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 504811438050942019, guid: 04adda17990769a489482db4e2360269, type: 3}
       propertyPath: _waves.Array.data[0]._enemies.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 504811438050942019, guid: 04adda17990769a489482db4e2360269, type: 3}
       propertyPath: _waves.Array.data[1]._enemies.Array.size
@@ -541,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 9210400562852480092, guid: bfb768dc2015c054cb95a2db61f19f19, type: 3}
     - target: {fileID: 1289843305099674754, guid: 04adda17990769a489482db4e2360269, type: 3}
       propertyPath: WaveTimer
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5282472412138596207, guid: 04adda17990769a489482db4e2360269, type: 3}
       propertyPath: m_Name
@@ -775,6 +775,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 169539290821126280, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
+      propertyPath: _tower
+      value: 
+      objectReference: {fileID: 489789700105346823, guid: aea8ba42c35ff31408a02a4416b044d4, type: 3}
     - target: {fileID: 3586879181331719575, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -855,10 +859,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4272310649099788525, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6120303862000323010, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8631569240025043215, guid: c260755162a4ee74e8e05e262a2461a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8700379963153082773, guid: aea8ba42c35ff31408a02a4416b044d4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

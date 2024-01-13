@@ -104,9 +104,9 @@ public class SpawnerManager : MonoBehaviour
         StartSpawn();
     }
 
-    public void AddEnemiesToTotal()
+    public void AddEnemiesToTotal(int amount)
     {
-        _enemiesLeft++;
+        _enemiesLeft += amount;
     }
 
     public void RemoveEnemiesFromTotal()

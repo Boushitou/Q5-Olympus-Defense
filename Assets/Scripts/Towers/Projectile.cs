@@ -32,7 +32,10 @@ public abstract class Projectile : MonoBehaviour
 
     public abstract void Movement();
 
-    public abstract void Effect();
+    public virtual void Effect()
+    {
+        _enemy.GetComponent<Enemy>().TakeDamage(_damage);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
