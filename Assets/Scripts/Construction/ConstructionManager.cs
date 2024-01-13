@@ -19,7 +19,7 @@ public class ConstructionManager : MonoBehaviour
     private Color _canPlace;
     private Color _cantPlace;
 
-    private int _faith = 10000;
+    private int _faith = 200;
     private int _maxFaith = 9999;
 
     private bool b_canConstruct = false;
