@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9126601356560709741}
   - component: {fileID: 3241497076148594639}
   - component: {fileID: 1965350928008262164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 4879831443363836887}
   - component: {fileID: -4091108818497530349}
   - component: {fileID: 2223025351822246550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,36 +178,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da022acbdb65df469605775db7f1d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 10
-      outSlope: 10
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5
-      value: 5
-      inSlope: -0.12833357
-      outSlope: -0.12833357
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9874878
-      value: 0
-      inSlope: -10.256667
-      outSlope: -10.256667
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4

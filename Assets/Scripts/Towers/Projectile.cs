@@ -7,21 +7,28 @@ public abstract class Projectile : MonoBehaviour
     protected Transform _enemy;
     protected int _damage;
 
+    private LayerMask _groundLayer;
+    protected Vector3 _direction = Vector3.zero;
+
     private void Awake()
     {
         _myTransform = transform;
+
+        _groundLayer = LayerMask.NameToLayer("Ground");
     }
 
     private void Update()
     {
-        if (_enemy != null)
+        Movement();
+
+        /*if (_enemy != null)
         {
             Movement();
         }
         else
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     public void SetValues(Transform enemy, int damage)
@@ -44,6 +51,10 @@ public abstract class Projectile : MonoBehaviour
             if (other.transform == _enemy)
             {
                 Effect();
+                Destroy(gameObject);
+            }
+            else if (other.gameObject.layer == _groundLayer)
+            {
                 Destroy(gameObject);
             }
         }

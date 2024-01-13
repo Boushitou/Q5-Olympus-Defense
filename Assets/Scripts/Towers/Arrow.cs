@@ -9,9 +9,12 @@ public class Arrow : Projectile
 
     public override void Movement()
     {
-        Vector3 direction = (_enemy.GetComponent<Collider>().bounds.center - _myTransform.position).normalized;
+        if (_enemy != null)
+        {
+            _direction = (_enemy.GetComponent<Collider>().bounds.center - _myTransform.position).normalized;
+        }
 
-        _myTransform.position += direction * _speed * Time.deltaTime;
-        _myTransform.rotation = Quaternion.LookRotation(direction);
+        _myTransform.position += _direction * _speed * Time.deltaTime;
+        _myTransform.rotation = Quaternion.LookRotation(_direction);
     }
 }

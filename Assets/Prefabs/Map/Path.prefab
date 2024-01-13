@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7766165801249570014}
   - component: {fileID: 744771653509309119}
   - component: {fileID: 3034398213716537864}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6227258401331633647}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
