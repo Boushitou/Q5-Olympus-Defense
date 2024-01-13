@@ -26,10 +26,17 @@ public abstract class Enemy : MonoBehaviour
 
     [SerializeField] private LifeBar _lifeBar;
 
+    private bool b_isSlowed;
+    private float _slowDuration = 2f;
+    private float _slowTime = 0;
+    private float _originalSpeed;
+
+    private bool b_isDead = false;
+
     private void Start()
     {
         _transform = transform;
-
+        _originalSpeed = _speed;
         _target = _path[0].transform.position + _deplacementOffset;
     }
 
@@ -42,6 +49,15 @@ public abstract class Enemy : MonoBehaviour
         else
         {
             Move();
+        }
+
+        if (b_isSlowed)
+        {
+            if (Time.time > _slowTime)
+            {
+                b_isSlowed = false;
+                _speed = _originalSpeed;
+            }
         }
     }
 
@@ -77,17 +93,30 @@ public abstract class Enemy : MonoBehaviour
         _life -= damage;
         _lifeBar.UpdateLife(_maxLife, _life);
 
-        if ( _life <= 0 )
+        if (_life <= 0 && !b_isDead)
             Death();
     }
 
     private void Death()
     { 
+        b_isDead = true;
+
         SpawnerManager.Instance.IncreaseTotalEnemiesKilled();
         SpawnerManager.Instance.RemoveEnemiesFromTotal();
         ConstructionManager.Instance.AddFaith(_belief);
 
         Destroy(gameObject); 
+    }
+
+    public void Slowed(float slowAmount)
+    {
+        _speed -= slowAmount;
+
+        if (_speed <= 0)
+            _speed = 1f;
+
+        _slowTime = Time.time + _slowDuration;
+        b_isSlowed = true;
     }
 
     protected abstract void Attack();

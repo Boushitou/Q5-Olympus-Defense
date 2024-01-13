@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -36,10 +37,8 @@ public class Spawner : MonoBehaviour
         _currentWave = _waves[_waveNb];
         _waveNb++;
 
-        for (int i = 0; i < _currentWave._enemies.Length; i++)
-        {
-            SpawnerManager.Instance.AddEnemiesToTotal();
-        }
+        SpawnerManager.Instance.AddEnemiesToTotal(_currentWave._enemies.Length);
+        Debug.Log(_currentWave._enemies.Length);
 
         for (int i = 0; i < _currentWave._enemies.Length; i++)
         {

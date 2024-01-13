@@ -32,13 +32,18 @@ public abstract class Projectile : MonoBehaviour
 
     public abstract void Movement();
 
+    public virtual void Effect()
+    {
+        _enemy.GetComponent<Enemy>().TakeDamage(_damage);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other != null)
         {
             if (other.transform == _enemy)
             {
-                _enemy.GetComponent<Enemy>().TakeDamage(_damage);
+                Effect();
                 Destroy(gameObject);
             }
         }
