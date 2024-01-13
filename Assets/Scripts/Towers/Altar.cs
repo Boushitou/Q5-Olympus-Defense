@@ -6,7 +6,7 @@ public class Altar : Tower
     private int _faith = 10;
     private int _waitTime = 10;
 
-    private void Start()
+    private void OnEnable()
     {
         WaitGainFaith();
     }

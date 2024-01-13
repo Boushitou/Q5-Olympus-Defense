@@ -161,7 +161,9 @@ public abstract class Enemy : MonoBehaviour
         if (structuresCollider.Length > 0)
         {
             b_HasToAttack = Mathf.Abs(Vector3.Dot(_transform.forward, structuresCollider[0].transform.position - _transform.position)) <= 0.05;
-            _transform.LookAt(structuresCollider[0].transform.position);
+            
+            if (b_HasToAttack) 
+                _transform.LookAt(structuresCollider[0].transform.position);
         }
 
         if (Vector3.Distance(_transform.position, _path[_pathIndex].transform.position) < 0.01)

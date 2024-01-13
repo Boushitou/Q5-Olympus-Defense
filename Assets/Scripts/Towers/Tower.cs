@@ -23,11 +23,12 @@ public abstract class Tower : MonoBehaviour
     {
         _myTransform = transform;
         _enemyMask = LayerMask.GetMask("Enemy");
+        
+        InitializeValue();
     }
 
     private void Start()
     {
-        InitializeValue();
         _health = _maxHealth;
     }
 
