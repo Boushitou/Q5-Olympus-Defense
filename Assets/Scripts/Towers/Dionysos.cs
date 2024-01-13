@@ -15,7 +15,7 @@ public class Dionysos : Tower
 
     public override void InitializeValue()
     {
-        _health = 80;
+        _maxHealth = 80;
         _damage = 10;
         _cost = 200;
         _atkSpeed = 1f;
