@@ -81,9 +81,10 @@ public class SpawnerManager : MonoBehaviour
             {
                 UIManager.Instance.UpdateWavesTxt(_currentWaveNumber, _totalWavesNumber);
                 spawner.StartWave();
-                _currentWaveNumber++;
             }
         }
+
+        _currentWaveNumber++;
     }
 
     private IEnumerator NextWavePreparation()
