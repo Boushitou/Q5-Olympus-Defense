@@ -171,7 +171,8 @@ public class ConstructionManager : MonoBehaviour
     public void AddFaith(int value)
     {
         _faith += _faith >= _maxFaith ? 0 : value;
-        
+
+        UpdateConstructionButton();
 
         _faithTxt.text = "Faith : " + _faith;
     }
