@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private ConstructionManager _constructionManager;
 
     private PlayerInput _playerInput;
 
@@ -31,6 +32,22 @@ public class PlayerController : MonoBehaviour
     public void OnPause(InputAction.CallbackContext context)
     {
         MenusButtons.Instance.Pause();
+    }
+
+    public void OnPlaceSelectedTower(InputAction.CallbackContext context)
+    {
+        _constructionManager.PlaceSelectedTower();
+    }
+
+    public void onUnselectTower(InputAction.CallbackContext context)
+    {
+        _constructionManager.UnselectTower();
+    }
+
+    public void OnMouseMove(InputAction.CallbackContext context)
+    {
+        _constructionManager.UpdateMousePosition(context.ReadValue<Vector2>());
+        _constructionManager.MoveSelectedTower();
     }
 
     private void UpdateBinding(InputActionMap actionMap, string actionName, string overridePath)

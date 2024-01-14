@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ConstructionButton : MonoBehaviour
 {
-    [SerializeField] Tower _tower;
+    [SerializeField] private int _cost = 1;
 
     private Button _button;
 
@@ -12,17 +12,13 @@ public class ConstructionButton : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (_tower != null)
-        {
-            //_button.interactable = _tower.GetCost() <= ConstructionManager.Instance.GetFaith();
-             if (_tower.GetCost() > ConstructionManager.Instance.GetFaith())
-             {
-                _button.interactable = false;
-             }
-             else
-                _button.interactable = true;
-        }
+        UpdateInteractable();
+    }
+
+    public void UpdateInteractable()
+    {
+        _button.interactable = _cost <= ConstructionManager.Instance.GetFaith();
     }
 }

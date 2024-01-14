@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1745031977020418360}
   - component: {fileID: 2598704439868930983}
   - component: {fileID: 4776035569898189906}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383dde2290e52ce498d8ee848572e7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 170
+  _maxLife: 0
 --- !u!65 &4776035569898189906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 1708972233133473905}
   - component: {fileID: 8467167797430242623}
   - component: {fileID: 2235580460040472012}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
