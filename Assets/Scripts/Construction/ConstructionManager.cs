@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -26,6 +27,8 @@ public class ConstructionManager : MonoBehaviour
 
     private TextMeshProUGUI _faithTxt;
 
+    [SerializeField] private List<ConstructionButton> _constructionButtonList; 
+
     private void Awake()
     {
         if (Instance == null)
@@ -48,44 +51,33 @@ public class ConstructionManager : MonoBehaviour
     private void Start()
     {
         _faithTxt.text = "Faith : " + _faith;
+    } 
+
+    public void UpdateMousePosition(Vector3 mousePosition)
+    {
+        _mousePos = mousePosition;
     }
 
-    private void Update()
+    public void MoveSelectedTower()
     {
         if (_currentlySelectedGhost != null)
         {
-            _mousePos = Input.mousePosition;
-
             Ray ray = _cam.ScreenPointToRay(_mousePos);
 
-            MoveSelectedTower(ray);
-
-            if (Input.GetMouseButtonUp(0))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, _tileLayer))
             {
-                PlaceSelectedTower(ray);
-            }
-            else if (Input.GetMouseButtonUp(1))
-            {
-                UnselectTower();
-            }
-        }
-    }
+                Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
 
-    public void MoveSelectedTower(Ray ray)
-    {
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, _tileLayer))
-        {
-            Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
+                _currentlySelectedGhost.transform.position = tilePos;
 
-            _currentlySelectedGhost.transform.position = tilePos;
-
-            if (hitInfo.transform.gameObject.CompareTag("Constructible"))
-            {
-                ChangeColorInChildren(_canPlace);
-            }
-            else
-            {
-                ChangeColorInChildren(_cantPlace);
+                if (hitInfo.transform.gameObject.CompareTag("Constructible"))
+                {
+                    ChangeColorInChildren(_canPlace);
+                }
+                else
+                {
+                    ChangeColorInChildren(_cantPlace);
+                }
             }
         }
     }
@@ -98,37 +90,54 @@ public class ConstructionManager : MonoBehaviour
         }
     }
 
-    public void PlaceSelectedTower(Ray ray)
+    public void PlaceSelectedTower()
     {
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, _tileLayer, ~_ghostLayer))
+        if (_currentlySelectedGhost != null)
         {
-            if (hitInfo.transform.gameObject.CompareTag("Constructible") && b_canConstruct)
+            Ray ray = _cam.ScreenPointToRay(_mousePos);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, _tileLayer, ~_ghostLayer))
             {
-                Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
+                if (hitInfo.transform.gameObject.CompareTag("Constructible") && b_canConstruct)
+                {
+                    Vector3 tilePos = new Vector3(hitInfo.transform.position.x, 0, hitInfo.transform.position.z);
 
-                GameObject tile = Instantiate(_currentlySelectedTower, tilePos, Quaternion.identity);
-                tile.GetComponent<Tower>().SetTile(hitInfo.transform.gameObject);
+                    GameObject tile = Instantiate(_currentlySelectedTower, tilePos, Quaternion.identity);
+                    tile.GetComponent<Tower>().SetTile(hitInfo.transform.gameObject);
 
-                _currentlySelectedTower.GetComponent<Tower>().InitializeValue();
-                RemoveFaith(_currentlySelectedTower.GetComponent<Tower>().GetCost());
+                    _currentlySelectedTower.GetComponent<Tower>().InitializeValue();
+                    RemoveFaith(_currentlySelectedTower.GetComponent<Tower>().GetCost());
+                    UpdateConstructionButton();
 
-                UnselectTower();
+                    UnselectTower();
 
-                hitInfo.transform.gameObject.tag = "Unconstructible";
+                    hitInfo.transform.gameObject.tag = "Unconstructible";
 
-                b_canConstruct = false;
+                    b_canConstruct = false;
+                }
             }
+        }
+    }
+
+    private void UpdateConstructionButton()
+    {
+        for (int i = 0; i < _constructionButtonList.Count; i++)
+        {
+            _constructionButtonList[i].UpdateInteractable();
         }
     }
 
     public void UnselectTower()
     {
-        Destroy(_currentlySelectedGhost);
-        _currentlySelectedGhost = null;
-        _currentlySelectedTower = null;
+        if (_currentlySelectedGhost != null)
+        {
+            Destroy(_currentlySelectedGhost);
+            _currentlySelectedGhost = null;
+            _currentlySelectedTower = null;
 
-        b_isBuilding = false;
-        b_canConstruct = false;
+            b_isBuilding = false;
+            b_canConstruct = false;
+        }
     }
 
     public void SetCurrentlySelectedGhost(GameObject towerGhost)
@@ -161,20 +170,15 @@ public class ConstructionManager : MonoBehaviour
 
     public void AddFaith(int value)
     {
-        _faith = _faith >= _maxFaith ? _maxFaith : _faith + value;
+        _faith += _faith >= _maxFaith ? 0 : value;
+        
 
         _faithTxt.text = "Faith : " + _faith;
     }
 
     public void RemoveFaith(int value)
     {
-        //_faith = _faith <= 0 ? 0 : _faith - value;
-
-        _faith -= value;
-        if (_faith <= 0)
-        {
-            _faith = 0;
-        }
+        _faith -= _faith <= 0 ? 0 : value;
 
         _faithTxt.text = "Faith : " + _faith;
     }

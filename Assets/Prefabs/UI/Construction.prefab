@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tower: {fileID: 3231961978356889787, guid: 9c00633aca142ff4594448da960e0abd, type: 3}
+  _cost: 1
 --- !u!1 &1394679479358666475
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &156361666350645760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -679,7 +680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.73, y: -30.2}
+  m_AnchoredPosition: {x: 32.73, y: -33.33}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5549209211725570459
@@ -801,6 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tower: {fileID: 489789700105346823, guid: aea8ba42c35ff31408a02a4416b044d4, type: 3}
+  _cost: 1
 --- !u!1 &2966002366609606310
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3581015939751930342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -961,6 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tower: {fileID: 2639770385317531285, guid: f7747573b5e1fa2488b363f30e3303a9, type: 3}
+  _cost: 1
 --- !u!1 &3875202912798669535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,6 +1015,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af7dd7f0277f01b43ad8eb1f29301fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _faith: 200
+  _constructionButtonList:
+  - {fileID: 1693170963464716324}
+  - {fileID: 4963974584318497599}
+  - {fileID: 2175276282067252474}
+  - {fileID: 3027692248332828089}
 --- !u!1 &4521424175285601663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,8 +1055,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 583, y: -441}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 572.9878, y: -441}
+  m_SizeDelta: {x: 220.0243, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1056847097264786758
 CanvasRenderer:
@@ -1077,7 +1086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Faith : 9999'
+  m_text: 'Faith : 10000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1165,7 +1174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8267350110468513931
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1184,7 +1193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.73, y: 30.2}
+  m_AnchoredPosition: {x: 32.73, y: 33.33}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8159695920281245067
@@ -1306,6 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tower: {fileID: -4054255837998235955, guid: e067a3f7a2630b343a20e7c9ab3d0a96, type: 3}
+  _cost: 1
 --- !u!1 &6694067434557240628
 GameObject:
   m_ObjectHideFlags: 0

@@ -185,6 +185,7 @@ MonoBehaviour:
     - {fileID: 6874800579659489516, guid: f384877b67730f24f84cf4b826d30105, type: 3}
     - {fileID: 9210400562852480092, guid: bfb768dc2015c054cb95a2db61f19f19, type: 3}
     _spawnPoint: {fileID: 1510432771893819962}
+  _indexPath: 2
   SpawnTimer: 1
 --- !u!1 &3506193540805917607
 GameObject:
@@ -393,6 +394,7 @@ MonoBehaviour:
     - {fileID: 6874800579659489516, guid: f384877b67730f24f84cf4b826d30105, type: 3}
     - {fileID: 9210400562852480092, guid: bfb768dc2015c054cb95a2db61f19f19, type: 3}
     _spawnPoint: {fileID: 1824577847449204536}
+  _indexPath: 1
   SpawnTimer: 1
 --- !u!1 &4102586549224878551
 GameObject:
@@ -650,6 +652,7 @@ MonoBehaviour:
     - {fileID: 6874800579659489516, guid: f384877b67730f24f84cf4b826d30105, type: 3}
     - {fileID: 9210400562852480092, guid: bfb768dc2015c054cb95a2db61f19f19, type: 3}
     _spawnPoint: {fileID: 6979638548061290415}
+  _indexPath: 0
   SpawnTimer: 1
 --- !u!1 &4646963199915228364
 GameObject:

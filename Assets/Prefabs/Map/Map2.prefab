@@ -150,6 +150,7 @@ MonoBehaviour:
     - {fileID: 6917676906797004979, guid: 746c57a378131a44fb9c95c0fb6d98bc, type: 3}
     - {fileID: 6917676906797004979, guid: 746c57a378131a44fb9c95c0fb6d98bc, type: 3}
     _spawnPoint: {fileID: 272773708248446855}
+  _indexPath: 1
   SpawnTimer: 1
 --- !u!1 &2008883191614467097
 GameObject:
@@ -744,6 +745,7 @@ MonoBehaviour:
     - {fileID: 6917676906797004979, guid: 746c57a378131a44fb9c95c0fb6d98bc, type: 3}
     - {fileID: 6917676906797004979, guid: 746c57a378131a44fb9c95c0fb6d98bc, type: 3}
     _spawnPoint: {fileID: 5871622027569086002}
+  _indexPath: 0
   SpawnTimer: 1
 --- !u!1 &8439716065325816127
 GameObject:
