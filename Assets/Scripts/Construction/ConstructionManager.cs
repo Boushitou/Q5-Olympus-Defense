@@ -19,7 +19,7 @@ public class ConstructionManager : MonoBehaviour
     private Color _canPlace;
     private Color _cantPlace;
 
-    private int _faith = 200;
+    [SerializeField] private int _faith = 200;
     private int _maxFaith = 9999;
 
     private bool b_canConstruct = false;
@@ -168,7 +168,13 @@ public class ConstructionManager : MonoBehaviour
 
     public void RemoveFaith(int value)
     {
-        _faith = _faith <= 0 ? 0 : _faith - value;
+        //_faith = _faith <= 0 ? 0 : _faith - value;
+
+        _faith -= value;
+        if (_faith <= 0)
+        {
+            _faith = 0;
+        }
 
         _faithTxt.text = "Faith : " + _faith;
     }

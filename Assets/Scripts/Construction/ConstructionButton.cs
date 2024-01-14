@@ -16,7 +16,13 @@ public class ConstructionButton : MonoBehaviour
     {
         if (_tower != null)
         {
-            _button.interactable = _tower.GetCost() <= ConstructionManager.Instance.GetFaith();
+            //_button.interactable = _tower.GetCost() <= ConstructionManager.Instance.GetFaith();
+             if (_tower.GetCost() > ConstructionManager.Instance.GetFaith())
+             {
+                _button.interactable = false;
+             }
+             else
+                _button.interactable = true;
         }
     }
 }
