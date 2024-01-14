@@ -63,6 +63,7 @@ public class MenusButtons : MonoBehaviour
 
     public void ButtonRetry()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
